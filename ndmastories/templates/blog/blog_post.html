@@ -24,7 +24,7 @@
             {% endif %}
         </p>
         <p class="right">
-            <a href="{% pageurl blog %}" class="btn btn-primary">Read More &rarr;</a>
+            {% if True or blog.downlink %}<a href="{{ blog.downlink }}" class="btn btn-primary">Download</a>{% endif %}<a href="{% pageurl blog %}" class="btn btn-secondary">Read More &rarr;</a>
         </p>
 
     <div class="share">

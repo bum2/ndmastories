@@ -12,9 +12,9 @@
                 <h2>Posts tagged with '{{ tag }}'</h2>
             {% endif %}
             {% if not category and not tag %}
-                <p>
+                <!-- <p>
                     &nbsp;
-                </p>
+                </p> -->
             {% endif %}
             {% for rl in self.related_links.all %}
                 <p>{{ rl.title }}: <a href='{{ rl.link_page.url }}'>{{ rl.link_page }}</a></p>
@@ -29,7 +29,7 @@
         <!-- <ul class="list-unstyled the-loop"> -->
         {% for blog in blogs %}
 
-            <div class="col-lg-4 col-md-6 col-sm-12 blog-post-item{% if forloop.first and not category and not tag %} first-reset{% endif %}">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 blog-post-item{% if forloop.first and not category and not tag %} first-reset{% endif %}">
                 {% include 'blog/blog_post.html' with include_context="index_page" %}
             </div>
 

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags blogapp_tags el_pagination_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+
+
+    <h1>{{ page.title }}</h1>
+
+    <div class="intro">{{ page.description }}</div>
+
+    {% for block in page.body %}
+        {% include_block block with block_id=block.id %}
+    {% endfor %}
+
+    {% paginate 5 posts %}
+
+    {% for post in posts %}
+        <div class="col-4">
+            {% if post.header_image %}
+                {% image post.header_image original as header_image %}
+                <a href="{% post_date_url post blog_page %}">
+                  <img src="{{ header_image.url }}" class="card-img-top" ></img>
+                </a>
+            {% endif %}
+
+            <div class="card-body">
+              <h2 class="card-title">
+                <a href="{% post_date_url post blog_page %}">{{ post.title }}</a>
+              </h2>
+              <p class="card-text">
+                {% if post.excerpt %}
+                    {{ post.excerpt|markdown|safe }}
+                {% else %}
+                    {{ post.body|markdown|safe|truncatewords_html:70 }}
+                {% endif %}
+              </p>
+              <a href="{% post_date_url post blog_page %}" class="btn btn-primary">Read More &rarr;</a>
+
+            </div>
+            <div class="card-footer text-muted">
+                Posted on {{ post.date }}
+            </div>
+        </div>
+
+    {% endfor %}
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center mb-4">
+      {% show_pages %}
+    </ul>
+
+
+    </div>
+</div>
+
+{% endblock %}

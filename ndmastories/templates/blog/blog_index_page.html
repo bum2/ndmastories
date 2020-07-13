@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags static wagtailimages_tags blogapp_tags el_pagination_tags %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 title">
+            {% if category %}
+                <h2>{{ category }}</h2>
+            {% endif %}
+            {% if tag %}
+                <h2>Posts tagged with '{{ tag }}'</h2>
+            {% endif %}
+            {% if not category and not tag %}
+                <p>
+                    &nbsp;
+                </p>
+            {% endif %}
+            {% for rl in self.related_links.all %}
+                <p>{{ rl.title }}: <a href='{{ rl.link_page.url }}'>{{ rl.link_page }}</a></p>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="row">
+
+    {% if blogs %}
+        {% paginate 5 blogs %}
+        <!-- <ul class="list-unstyled the-loop"> -->
+        {% for blog in blogs %}
+
+            <div class="col-lg-4 col-md-6 col-sm-12 blog-post-item{% if forloop.first and not category and not tag %} first-reset{% endif %}">
+                {% include 'blog/blog_post.html' with include_context="index_page" %}
+            </div>
+
+        {% endfor %}
+        <!-- </ul> -->
+
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center mb-4">
+          {% show_pages %}
+        </ul>
+
+    {% else %}
+        <p>There are currently no blog posts</p>
+    {% endif %}
+
+    </div>
+</div>
+{% endblock %}

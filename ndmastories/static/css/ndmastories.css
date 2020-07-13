@@ -1,0 +1,59 @@
+
+
+.title h2 {
+    margin: 1em 0 .5em;
+    color: #42425e;
+    font-weight: bold;
+}
+
+.card-body h2 {
+    margin: .5em 0 .4em;
+    font-size: 1.5em;
+}
+.card-body h2 a {
+    color: #42425e;
+    font-weight: bolder;
+
+}
+
+body {
+    font-family: Trebuchet MS, Helvetica, sans-serif;
+}
+
+.blog-post-item .card-body {
+    border: 1px solid #42425e33;
+    padding: 1em 1em 0;
+    border-radius: 6px;
+    margin: 0;
+    background-color: #fff;
+}
+
+.right {
+    text-align: right;
+}
+
+.card-footer {
+    background: none;
+}
+
+
+
+/*   R E S P O N S I V E  */
+
+@media (max-width: 959px) {
+
+}
+@media (max-width: 959px) and (min-width: 0) and (orientation: portrait) {
+    .blog-post-item .card-body {
+        margin-bottom: 1em;
+    }
+}
+@media (min-width: 960px) {
+
+}
+@media (max-width: 660px) {
+
+}
+@media (min-width: 661px) {
+
+}

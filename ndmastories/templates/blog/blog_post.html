@@ -24,7 +24,11 @@
             {% endif %}
         </p>
         <p class="right">
-            {% if True or blog.downlink %}<a href="{{ blog.downlink }}" class="btn btn-primary">Download</a>{% endif %}<a href="{% pageurl blog %}" class="btn btn-secondary">Read More &rarr;</a>
+            {% if blog.categories.first.category.name == 'Alerts' %}
+                <a href="{% pageurl blog %}" class="downlink btn btn-primary"
+                    style="float:left;">Download</a>
+            {% endif %}
+            <a href="{% pageurl blog %}" class="btn btn-secondary">Read More &rarr;</a>
         </p>
 
     <div class="share">
